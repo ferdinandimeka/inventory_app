@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs')
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 
 const userSchema = new mongoose.Schema({
-    username: {
+    name: {
         type: String,
         required: [true, 'Please provide a username'],
         unique: true,
@@ -38,6 +38,17 @@ const userSchema = new mongoose.Schema({
         maxlength: [15, 'Phone number cannot be more than 15 characters'],
         default: '+234'
     },
+    city: String,
+    country: String,
+    state: String,
+    occupation: String,
+    transactions: Array,
+    role: {
+        type: String,
+        enum: ['user', 'admin', 'superadmin'],
+        default: 'admin'
+    
+    },
     biography: {
         type: String,
         required: [true, 'Please provide a biography'],
@@ -59,4 +70,4 @@ userSchema.pre('save', async function(next) {
 });
 
 const Users = mongoose.model('User', userSchema);
-module.exports = Users;
+export default Users;

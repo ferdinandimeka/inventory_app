@@ -12,7 +12,7 @@ import { useTheme } from '@emotion/react'
 import { AppBar, IconButton, InputBase, Toolbar, Box , Typography, MenuItem, Menu,
     Button} from '@mui/material'
 
-const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
+const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
     const dispatch = useDispatch()
     const theme = useTheme()
 
@@ -83,7 +83,7 @@ const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                         <Box
                             component="img"
                             alt="profile"
-                            src="https://avatars.githubusercontent.com/u/72367851?v=4"
+                            src={user.photo}
                             height="32px"
                             width="32px"
                             borderRadius="50%"
@@ -95,13 +95,13 @@ const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                                 fontSize="0.9rem"
                                 sx={{ color: theme.palette.secondary.main }}
                             >
-                                John Doe
+                                {user.name}
                             </Typography>
                             <Typography
                                 fontSize="0.75"
                                 sx={{ color: theme.palette.secondary[200] }}
                             >
-                                Developer
+                                {user.occupation}
                             </Typography>
                         </Box>
                         <ArrowDropDownOutlined

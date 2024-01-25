@@ -15,7 +15,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import FlexBetween from './FlexBetween'
 
 
-const SideBar = ({drawerWidth, isSideBarOpen, setIsSideBarOpen, isNonMobile}) => {
+const SideBar = ({user, drawerWidth, isSideBarOpen, setIsSideBarOpen, isNonMobile}) => {
     const { pathname } = useLocation()
     const [active, setActive] = useState("")
     const navigate = useNavigate()
@@ -135,15 +135,11 @@ const SideBar = ({drawerWidth, isSideBarOpen, setIsSideBarOpen, isNonMobile}) =>
                             <ListItem key={item.text} disablePadding >
                                 <ListItemButton
                                     onClick={() => navigate(`/${Text}`)}
-                                    setactive={Text}
+                                    setActive={Text}
                                     sx={{
                                         borderRadius: "0 30px 30px 0",
                                         backgroundColor: active === Text ? theme.palette.secondary[300] : "transparent",
-                                        color: active === Text ? theme.palette.secondary.main : theme.palette.secondary[200],
-                                        "&:hover": {
-                                            backgroundColor: theme.palette.background.default,
-                                            color: theme.palette.secondary.main,
-                                        },
+                                        color: active === Text ? theme.palette.primary[600] : theme.palette.secondary[200],
                                     }}
                                 >
                                     <ListItemIcon
@@ -170,11 +166,11 @@ const SideBar = ({drawerWidth, isSideBarOpen, setIsSideBarOpen, isNonMobile}) =>
 
             <Box bottom="4rem">
                 <Divider />
-                <FlexBetween textTransform="none" gap="1.5rem" m="1.5rem 2rem 2rem 3rem">
+                <FlexBetween textTransform="none" gap="1.0rem" m="1.5rem 2rem 2rem 3rem">
                     <Box
                         component="img"
                         alt="profile"
-                        src={"https://avatars.githubusercontent.com/u/48829268?v=4"}
+                        src={user.photo}
                         height="40px"
                         width="40px"
                         borderRadius="50%"
@@ -186,7 +182,7 @@ const SideBar = ({drawerWidth, isSideBarOpen, setIsSideBarOpen, isNonMobile}) =>
                             fontSize="0.9rem"
                             sx={{ color: theme.palette.secondary.main }}
                         >
-                            John Doe
+                            {user.name}
                         </Typography>
 
                         <Typography
@@ -194,7 +190,7 @@ const SideBar = ({drawerWidth, isSideBarOpen, setIsSideBarOpen, isNonMobile}) =>
                             fontSize={12}
                             sx={{ color: theme.palette.secondary[200] }}
                         >
-                            Admin
+                            {user.role}
                         </Typography>
                     </Box>
                     <SettingsOutlined

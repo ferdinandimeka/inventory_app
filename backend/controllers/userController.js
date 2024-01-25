@@ -1,17 +1,17 @@
-const Users = require('../models/userModel');
-const Token = require('../models/tokenModel');
-const asyncHandler = require('express-async-handler');
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcryptjs')
-const crypto = require('crypto')
-const sendEmail = require('../utils/sendEmail')
+import Users from '../models/userModel.js';
+import Token from '../models/tokenModel.js';
+import asyncHandler from 'express-async-handler';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
+import sendEmail from '../utils/sendEmail.js';
 
 const generateToken = (id) => {
     return jwt.sign({id}, process.env.JWT_SECRET_KEY,
         {expiresIn: "1d"})
 }
 
-exports.registerUser = asyncHandler( async (req, res) => {
+export const registerUser = asyncHandler( async (req, res) => {
 
     if (!req.body.username || !req.body.email || !req.body.password) {
         res.status(400)
@@ -65,7 +65,7 @@ exports.registerUser = asyncHandler( async (req, res) => {
     }
 })
 
-exports.loginUser = asyncHandler( async (req, res) => {
+export const loginUser = asyncHandler( async (req, res) => {
 
     const { email, password } = req.body;
     
@@ -115,7 +115,7 @@ exports.loginUser = asyncHandler( async (req, res) => {
     }
 })
 
-exports.logOutUser = asyncHandler( async (req, res) => {
+export const logOutUser = asyncHandler( async (req, res) => {
     res.cookie('token', 'none', {
         expires: new Date(Date.now(0)),
         httpOnly: true,
@@ -131,7 +131,7 @@ exports.logOutUser = asyncHandler( async (req, res) => {
     });
 })
 
-exports.getUser = asyncHandler( async (req, res) => {
+export const getUser = asyncHandler( async (req, res) => {
     const user = await Users.findById(req.user._id);
 
     const { _id, username, email, photo, phone, biography } = user;
@@ -146,7 +146,7 @@ exports.getUser = asyncHandler( async (req, res) => {
     });
 })
 
-exports.loggedInStatus = asyncHandler( async (req, res) => {
+export const loggedInStatus = asyncHandler( async (req, res) => {
     const token = req.cookies.token
 
     if (!token) {
@@ -161,7 +161,7 @@ exports.loggedInStatus = asyncHandler( async (req, res) => {
     res.json(false)
 })
 
-exports.updateUser = asyncHandler( async (req, res) => {
+export const updateUser = asyncHandler( async (req, res) => {
     const user = await Users.findById(req.user._id);
 
     if (user) {
@@ -188,7 +188,7 @@ exports.updateUser = asyncHandler( async (req, res) => {
     }
 })
 
-exports.changePassword = asyncHandler( async (req, res) => {
+export const changePassword = asyncHandler( async (req, res) => {
     const user = await Users.findById(req.user._id).select('+password');
     if (!user) {
         res.status(404)
@@ -218,7 +218,7 @@ exports.changePassword = asyncHandler( async (req, res) => {
     }
 })
 
-exports.forgotPassword = asyncHandler( async (req, res) => {
+export const forgotPassword = asyncHandler( async (req, res) => {
     const { email } = req.body;
     const user = await Users.findOne({ email });
 
@@ -275,7 +275,7 @@ exports.forgotPassword = asyncHandler( async (req, res) => {
     }
 })
 
-exports.resetPassword = asyncHandler( async (req, res) => {
+export const resetPassword = asyncHandler( async (req, res) => {
     const { resetToken } = req.params;
     const { password } = req.body;
 
