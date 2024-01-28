@@ -92,13 +92,13 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                         <Box textAlign="left">
                             <Typography
                                 fontWeight="bold"
-                                fontSize="0.9rem"
+                                fontSize="0.85rem"
                                 sx={{ color: theme.palette.secondary.main }}
                             >
                                 {user.name}
                             </Typography>
                             <Typography
-                                fontSize="0.75"
+                                fontSize="0.rem"
                                 sx={{ color: theme.palette.secondary[200] }}
                             >
                                 {user.occupation}
