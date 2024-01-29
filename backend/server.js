@@ -11,10 +11,14 @@ import mongoose from 'mongoose';
 import Users from './models/userModel.js';
 import userRoute from './routes/userRoutes.js';
 import generalRoute from './routes/generalRoutes.js';
-// import productRoute from './routes/productRoutes';
+import clientRoute from './routes/clientRoutes.js';
+import customerRoute from './routes/clientRoutes.js';
 import errorHandler from './middlewares/errorMiddleware.js';
 // data
-import { dataUser } from './data/index.js';
+import { dataUser, dataAffiliateStat, dataProduct, dataTransaction } from './data/index.js';
+import Product from './models/productModel.js';
+import ProductStats from './models/productStatsModel.js';
+import Transaction from './models/transactionModel.js';
 
 config()
 const app = express();
@@ -50,9 +54,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(morgan("common"))
 
 // routes
-app.use('/api/v1/users', userRoute);
+//app.use('/api/v1/users', userRoute);
 app.use('/api/v1/users', generalRoute);
-// app.use('/api/v1/products', productRoute);
+app.use('/api/v1/clients', clientRoute);
+
 
 // config
 const pass = encodeURIComponent(process.env.PASSWORD)
@@ -69,6 +74,9 @@ mongoose.connect(uri)
         })
         // data should be added once, so comment this out after running once
         // Users.insertMany(dataUser)
+        // Product.insertMany(dataProduct)
+        // ProductStats.insertMany(dataAffiliateStat)
+        // Transaction.insertMany(dataTransaction)
         //   .then(() => {
         //       console.log('Data inserted')
         //   })
