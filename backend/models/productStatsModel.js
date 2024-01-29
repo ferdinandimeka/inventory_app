@@ -22,6 +22,7 @@ const productStatsSchema = new mongoose.Schema({
     }],
 }, {
     timestamps: true,
+    versionKey: false
 });
 
 const ProductStats = mongoose.model('ProductStats', productStatsSchema);
