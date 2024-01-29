@@ -9,6 +9,7 @@ const productSchema = new mongoose.Schema({
     supply: Number,
 }, {
     timestamps: true,
+    versionKey: false
 });
 
 const Product = mongoose.model('Product', productSchema);
