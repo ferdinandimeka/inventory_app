@@ -33,11 +33,11 @@ const Product = ({ _id, name, price, description, category, rating, supply, stat
         >
             <CardContent>
                 <Typography variant="h5" gutterBottom >
-                    {name}
+                    {category}
                 </Typography>
                 <Typography variant="body2">{description}</Typography>
                 <Typography variant="body2" color="text.secondary">
-                    {category}
+                    {name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                     ${Number(price).toFixed(2)}
