@@ -2,15 +2,15 @@ import mongoose from 'mongoose';
 
 const transactionSchema = new mongoose.Schema({
     userId: String,
-    amount: Number,
+    cost: String,
     products: {
-        type: [mongoose.Schema.ObjectId],
-        ref: 'Product',
-        of: String
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: 'Product'
     },
 
 },  {
         timestamps: true,
+        versionKey: false
     }
 );
 
