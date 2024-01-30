@@ -4,6 +4,7 @@ import asyncHandler from 'express-async-handler';
 import ProductStats from '../models/productStatsModel.js';
 import User from '../models/userModel.js';
 import Transaction from '../models/transactionModel.js';
+import countryISO2to3 from 'country-iso-2-to-3'
 
 export const getProducts = asyncHandler(async (req, res) => {
     const products = await Product.find({});
@@ -38,7 +39,7 @@ export const getCustomers = asyncHandler(async (req, res) => {
 export const getTransactions = asyncHandler(async (req, res) => {
     try {
         // sort should look like this: { "field": "userId", "sort": "desc"}
-        const { page = 1, pageSize = 20, sort = null, search = "" } = req.query;
+        const { page = 1, pageSize, sort = null, search = "" } = req.query;
 
         // formatted sort should look like { userId: -1 }
         const generateSort = () => {
@@ -72,5 +73,32 @@ export const getTransactions = asyncHandler(async (req, res) => {
     } catch (error) {
         res.status(404)
         throw new Error('Transactions not found')
+    }
+});
+
+export const getGeography = asyncHandler(async (req, res) => {
+    try {
+        const users = await User.find();
+
+        const mappedLocations = users.reduce((acc, { country }) => {
+            const countryISO3 = countryISO2to3(country);
+            if (!acc[countryISO3]) {
+                acc[countryISO3] = 0;
+            }
+
+            acc[countryISO3] += 1;
+            return acc;   
+        }, {});
+        //console.log(mappedLocations);
+
+        const locations = Object.entries(mappedLocations).map(([country, count]) => ({
+            id: country,
+            value: count,
+        }));
+
+        res.status(200).json(locations);
+    } catch(error) {
+        res.status(404)
+        throw new Error('Geography not found')
     }
 });
