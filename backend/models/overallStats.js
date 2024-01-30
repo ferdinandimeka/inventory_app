@@ -26,6 +26,7 @@ const overallStatsSchema = new mongoose.Schema({
     },
 }, {
     timestamps: true,
+    versionKey: false
 });
 
 const OverallStats = mongoose.model('OverallStats', overallStatsSchema);
