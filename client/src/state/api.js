@@ -30,8 +30,12 @@ export const api = createApi({
                 providesTags: ['Transactions']
             }),
         }),
+        getGeography: builder.query({
+            query: () => '/api/v1/clients/geography',
+            providesTags: ['Geography']
+        }),
     }),
 })
 
 export const { useGetUserQuery, useGetProductsQuery, useGetCustomersQuery,
-useGetTransactionsQuery } = api;
+useGetTransactionsQuery, useGetGeographyQuery } = api;
