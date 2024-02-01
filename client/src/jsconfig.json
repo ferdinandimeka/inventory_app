@@ -1,6 +1,7 @@
 {
-    "compilerOptions": {
-      "baseUrl": "src"
-    },
-    "include": ["src"]
+  "compilerOptions": {
+    "baseUrl": "src"
+  },
+  "include": ["src", "path/to/file"],
+  "exclude": ["node_modules", "build", "scripts", "acceptance-tests", "webpack", "jest"]
 }
