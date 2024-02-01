@@ -126,13 +126,14 @@ const BreakDownChart = ({ isDashboard=false }) => {
       />
     <Box
       position="absolute"
-      top='59%'
-      left='58%'
+      top='50%'
+      left='40%'
       color={theme.palette.secondary[400]}
       textAlign="center"
       pointerEvents="none"
       sx={{
-        transform: isDashboard ? 'translate(-50%, -50%)' : 'translate(-50%, -50%) scale(1.5)',
+        transform: isDashboard ? "translate(-75%, -170%)"
+        : "translate(-220%, -100%)",
       }}
     >
       <Typography variant="h6">
