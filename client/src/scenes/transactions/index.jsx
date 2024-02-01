@@ -44,7 +44,7 @@ const Transactions = () => {
                 sx={{
                     '& .MuiDataGrid-root': {
                         border: 'none',
-                        backgroundColor: theme.palette.secondary[800],
+                        backgroundColor: 'none',
                         color: theme.palette.text.primary,
                         '& .MuiDataGrid-cell': {
                             color: theme.palette.text.primary,
@@ -63,7 +63,7 @@ const Transactions = () => {
                             },
                         },
                         '& .MuiDataGrid-toolbarContainer .MuiButton-text': {
-                            color: theme.palette.primary[600],
+                            color: theme.palette.secondary[600],
                         },
                         '& .MuiDataGrid-footerContainer': {
                             backgroundColor: theme.palette.background.main,
