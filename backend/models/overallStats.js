@@ -2,23 +2,23 @@ import mongoose from 'mongoose';
 
 const overallStatsSchema = new mongoose.Schema({
     totalCustomers: Number,
-    yearlyTotalSales: Number,
+    yearlySalesTotal: Number,
     yearlyTotalSoldUnits: Number,
     year: Number,
     monthlyData: [{
-        month: Number,
+        month: String,
         totalSales: Number,
-        totalSoldUnits: Number,
+        totalUnits: Number,
     }],
     weeklyData: [{
-        week: Number,
+        week: String,
         totalSales: Number,
-        totalSoldUnits: Number,
+        totalUnits: Number,
     }],
     dailyData: [{
-        day: Number,
+        date: String,
         totalSales: Number,
-        totalSoldUnits: Number,
+        totalUnits: Number,
     }],
     salesByCategory: {
         type: Map,

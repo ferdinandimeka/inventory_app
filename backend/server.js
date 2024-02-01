@@ -12,13 +12,15 @@ import Users from './models/userModel.js';
 import userRoute from './routes/userRoutes.js';
 import generalRoute from './routes/generalRoutes.js';
 import clientRoute from './routes/clientRoutes.js';
-import customerRoute from './routes/clientRoutes.js';
+import salesRoute from './routes/salesRoutes.js';
 import errorHandler from './middlewares/errorMiddleware.js';
 // data
-import { dataUser, dataAffiliateStat, dataProduct, dataTransaction } from './data/index.js';
+import { dataUser, dataAffiliateStat, dataProduct, dataTransaction,
+dataOverallStat } from './data/index.js';
 import Product from './models/productModel.js';
 import ProductStats from './models/productStatsModel.js';
 import Transaction from './models/transactionModel.js';
+import OverallStats from './models/overallStats.js';
 
 config()
 const app = express();
@@ -57,6 +59,7 @@ app.use(morgan("common"))
 //app.use('/api/v1/users', userRoute);
 app.use('/api/v1/users', generalRoute);
 app.use('/api/v1/clients', clientRoute);
+app.use('/api/v1/sales', salesRoute);
 
 
 // config
@@ -77,6 +80,7 @@ mongoose.connect(uri)
         // Product.insertMany(dataProduct)
         // ProductStats.insertMany(dataAffiliateStat)
         // Transaction.insertMany(dataTransaction)
+        //OverallStats.insertMany(dataOverallStat)
         //   .then(() => {
         //       console.log('Data inserted')
         //   })
