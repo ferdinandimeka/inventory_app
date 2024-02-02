@@ -9,7 +9,7 @@ import rateLimit from 'express-rate-limit';
 import { config } from 'dotenv';
 import mongoose from 'mongoose';
 import Users from './models/userModel.js';
-import userRoute from './routes/userRoutes.js';
+import managementRoute from './routes/managementRoutes.js';
 import generalRoute from './routes/generalRoutes.js';
 import clientRoute from './routes/clientRoutes.js';
 import salesRoute from './routes/salesRoutes.js';
@@ -60,6 +60,7 @@ app.use(morgan("common"))
 app.use('/api/v1/users', generalRoute);
 app.use('/api/v1/clients', clientRoute);
 app.use('/api/v1/sales', salesRoute);
+app.use('/api/v1/management', managementRoute);
 
 
 // config
