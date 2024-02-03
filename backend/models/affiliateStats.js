@@ -2,11 +2,11 @@ import mongoose from 'mongoose';
 
 const affiliateStatsSchema = new mongoose.Schema({
     userId: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'User'
+        type: mongoose.Types.ObjectId,
+        ref: 'Users'
     },
     affiliateSales: {
-        type: [mongoose.Schema.ObjectId],
+        type: [mongoose.Types.ObjectId],
         ref: 'Transaction',
     }
 },

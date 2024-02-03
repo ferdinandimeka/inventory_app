@@ -17,10 +17,12 @@ import errorHandler from './middlewares/errorMiddleware.js';
 // data
 import { dataUser, dataAffiliateStat, dataProduct, dataTransaction,
 dataOverallStat } from './data/index.js';
+
 import Product from './models/productModel.js';
 import ProductStats from './models/productStatsModel.js';
 import Transaction from './models/transactionModel.js';
 import OverallStats from './models/overallStats.js';
+import AffiliateStats from './models/affiliateStats.js';
 
 config()
 const app = express();
@@ -82,6 +84,7 @@ mongoose.connect(uri)
         // ProductStats.insertMany(dataAffiliateStat)
         // Transaction.insertMany(dataTransaction)
         //OverallStats.insertMany(dataOverallStat)
+        // AffiliateStats.insertMany(dataAffiliateStat)
         //   .then(() => {
         //       console.log('Data inserted')
         //   })
