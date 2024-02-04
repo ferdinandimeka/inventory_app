@@ -30,12 +30,7 @@ export const getPerformance = asyncHandler(async (req, res) => {
                 }
             },
             { $unwind: "$affiliate_stats" }
-        ]);
-
-        // if (userWithStats[0] === undefined) {
-        //     res.status(404);
-        //     throw new Error("User not found");
-        // }
+        ])
 
         console.log(userWithStats[0]);
 
