@@ -2,6 +2,7 @@ import { ResponsivePie } from '@nivo/pie'
 import { useGetSalesQuery } from '../state/api'
 import { Box, Typography, useTheme } from '@mui/material'
 
+// eslint-disable-next-line react/prop-types
 const BreakDownChart = ({ isDashboard=false }) => {
 
   const { data, isLoading } = useGetSalesQuery()
@@ -126,14 +127,14 @@ const BreakDownChart = ({ isDashboard=false }) => {
       />
     <Box
       position="absolute"
-      top='50%'
-      left='40%'
+      // top='50%'
+      // left='50%'
       color={theme.palette.secondary[400]}
       textAlign="center"
       pointerEvents="none"
       sx={{
-        transform: isDashboard ? "translate(-75%, -170%)"
-        : "translate(-220%, -100%)",
+        transform: isDashboard ? "translate(280%, -440%)"
+        : "translate(100%, -400%)",
       }}
     >
       <Typography variant="h6">
