@@ -75,7 +75,7 @@ const Performance = () => {
             }}
         >
             <DataGrid
-                loading={isLoading || !data}
+                loading={isLoading}
                 rows={(data && data.sales) || []}
                 columns={columns}
                 getRowId={(row) => row._id}

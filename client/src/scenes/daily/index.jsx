@@ -116,7 +116,7 @@ const Daily = () => {
                     axisRight={null}
                     axisBottom={{
                         orient: 'bottom',
-                        tickSize: 5,
+                        tickSize: 4,
                         tickPadding: 5,
                         tickRotation: 90,
                         legend: 'Month',

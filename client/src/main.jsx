@@ -7,6 +7,7 @@ import globalReducer from './state'
 import './index.css'
 import { api } from './state/api'
 import { setupListeners } from '@reduxjs/toolkit/query'
+import { Toaster } from 'react-hot-toast';
 
 const store = configureStore({
   reducer: {
@@ -22,6 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       <App />
+      <Toaster />
     </Provider>
   </React.StrictMode>,
 )

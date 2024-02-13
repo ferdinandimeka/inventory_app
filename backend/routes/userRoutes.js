@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post('/register', registerUser)
 router.post('/login', loginUser)
-router.get('/logout', logOutUser)
+router.post('/logout', logOutUser)
 router.get('/profile', protect, getUser)
 router.get('/loggedin', loggedInStatus)
 router.patch('/updateUser', protect, updateUser)

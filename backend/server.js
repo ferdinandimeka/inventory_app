@@ -14,6 +14,7 @@ import generalRoute from './routes/generalRoutes.js';
 import clientRoute from './routes/clientRoutes.js';
 import salesRoute from './routes/salesRoutes.js';
 import errorHandler from './middlewares/errorMiddleware.js';
+import userRoute from './routes/userRoutes.js';
 // data
 import { dataUser, dataAffiliateStat, dataProduct, dataTransaction,
 dataOverallStat } from './data/index.js';
@@ -58,7 +59,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(morgan("common"))
 
 // routes
-//app.use('/api/v1/users', userRoute);
+app.use('/api/v1/user', userRoute);
 app.use('/api/v1/users', generalRoute);
 app.use('/api/v1/clients', clientRoute);
 app.use('/api/v1/sales', salesRoute);

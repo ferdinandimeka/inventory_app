@@ -29,7 +29,7 @@ const Customers = () => {
             height="75vh"
             sx={{
                 '& .MuiDataGrid-root': {
-                    border: `1px solid ${theme.palette.secondary[300]}`,
+                    //border: `1px solid ${theme.palette.secondary[300]}`,
                     borderRadius: "10px",
                     '& .MuiDataGrid-cell': {
                         color: theme.palette.text.primary,
@@ -41,11 +41,11 @@ const Customers = () => {
                         color: theme.palette.text.primary,
                         fontWeight: "bold",
                     },
-                    '& .MuiDataGrid-row': {
-                        '&:nth-of-type(odd)': {
-                            backgroundColor: theme.palette.secondary[700],
-                        },
-                    },
+                    // '& .MuiDataGrid-row': {
+                    //     '&:nth-of-type(odd)': {
+                    //         backgroundColor: theme.palette.secondary[700],
+                    //     },
+                    // },
                     '& .MuiDataGrid-toolbarContainer .MuiButton-text': {
                         color: theme.palette.primary[600],
                     },

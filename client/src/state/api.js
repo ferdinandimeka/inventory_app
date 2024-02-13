@@ -7,7 +7,7 @@ export const api = createApi({
     'Sales', 'Admin', 'Performance', 'Dashboard', 'Customer'],
     endpoints: (builder) => ({
         getUser: builder.query({
-            query: (id) => `/api/v1/users/user?${id}`,
+            query: (id) => `/api/v1/users/user/${id}`,
             providesTags: ['User']
         }),
         getProducts: builder.query({
@@ -51,9 +51,36 @@ export const api = createApi({
             query: () => '/api/v1/users/dashboard',
             providesTags: ['Dashboard']
         }),
+        createUser: builder.mutation({
+            query: (user) => ({
+                url: '/api/v1/user/register',
+                method: 'POST',
+                body: user
+            }),
+            invalidatesTags: ['User']
+        }),
+        loginUser: builder.mutation({
+            query: (user) => ({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: '/api/v1/user/login',
+                method: 'POST',
+                body: user
+            }),
+            invalidatesTags: ['User']
+        }),
+        logoutUser: builder.mutation({
+            query: () => ({
+                url: '/api/v1/user/logout',
+                method: 'POST'
+            }),
+            providesTags: ['User']
+        }),
     }),
 })
 
 export const { useGetUserQuery, useGetProductsQuery, useGetCustomersQuery,
 useGetTransactionsQuery, useGetGeographyQuery, useGetSalesQuery, useGetAdminQuery,
-useGetPerformanceQuery, useGetDashboardQuery } = api;
+useGetPerformanceQuery, useGetDashboardQuery, useCreateUserMutation,
+useLoginUserMutation, useLogoutUserMutation } = api;

@@ -4,26 +4,42 @@ import React from 'react'
 import { LightModeOutlined, DarkModeOutlined, Menu as MenuIcon, Search, SettingsOutlined,
     ArrowDropDownOutlined
  } from '@mui/icons-material'
-import { useDispatch } from 'react-redux'
-import { setMode } from '../state'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { logout, setMode } from '../state'
 import FlexBetween from './FlexBetween'
 //import profileImage from '../assets/images/profile.jpg'
 import { useTheme } from '@emotion/react'
 import { AppBar, IconButton, InputBase, Toolbar, Box , Typography, MenuItem, Menu,
     Button} from '@mui/material'
+import { useLogoutUserMutation } from '../state/api'
 
 const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
     const dispatch = useDispatch()
     const theme = useTheme()
+    const [ logoutUser ] = useLogoutUserMutation()
+    const navigate = useNavigate()
 
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const { userInfo } = useSelector((state) => state.global)
     const isOpen = Boolean(anchorEl);
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
+
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const logOutHandler = async () => {
+        try {
+            await logoutUser().unwrap()
+            dispatch(logout())
+            navigate('/login')
+        } catch (error) {
+            console.log(error)
+        }  
+    }
 
   return (
     <AppBar sx={{
@@ -114,7 +130,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                         onClose={handleClose}
                         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
                     >
-                        <MenuItem onClick={handleClose}>Log Out</MenuItem>
+                        <MenuItem onClick={logOutHandler}>Log Out</MenuItem>
                     </Menu>
                 </FlexBetween>
             </FlexBetween>

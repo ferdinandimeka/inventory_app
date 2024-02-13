@@ -13,19 +13,19 @@ const generateToken = (id) => {
 
 export const registerUser = asyncHandler( async (req, res) => {
 
-    if (!req.body.username || !req.body.email || !req.body.password) {
+    if (!req.body.name || !req.body.email || !req.body.password) {
         res.status(400)
         throw new Error('Please provide all required fields')
     }
 
-    if (req.body.password.length < 6) {
+    if (req.body.password.length < 8) {
         res.status(400)
-        throw new Error('Password must be at least 6 characters')
+        throw new Error('Password must be at least 8 characters')
     }
 
     const existUser = await Users.findOne({ email: req.body.email });
     
-    const { username, email, password, phone, biography } = req.body;
+    const { name, email, password, phone, biography } = req.body;
 
     if (existUser) {
         res.status(400)
@@ -34,7 +34,7 @@ export const registerUser = asyncHandler( async (req, res) => {
     
     if (!existUser){
         const user = await Users.create({
-            username,
+            name,
             email,
             password,
             phone,
@@ -134,11 +134,11 @@ export const logOutUser = asyncHandler( async (req, res) => {
 export const getUser = asyncHandler( async (req, res) => {
     const user = await Users.findById(req.user._id);
 
-    const { _id, username, email, photo, phone, biography } = user;
+    const { _id, name, email, photo, phone, biography } = user;
 
     res.status(200).json({
         _id,
-        username,
+        name,
         email,
         photo,
         phone,
