@@ -72,6 +72,7 @@ app.use('/api/v1/management', managementRoute);
 //   '<password>',
 //   pass
 // );
+// console.log(pass)
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
