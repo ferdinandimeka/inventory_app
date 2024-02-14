@@ -67,14 +67,14 @@ app.use('/api/v1/management', managementRoute);
 
 
 // config
-const pass = encodeURIComponent(process.env.PASSWORD)
-let uri = process.env.MONGODB_URI.replace(
-  '<password>',
-  pass
-);
+// const pass = encodeURIComponent(process.env.PASSWORD)
+// let uri = process.env.MONGODB_URI.replace(
+//   '<password>',
+//   pass
+// );
 
 // Connect to MongoDB
-mongoose.connect(uri)
+mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}`);
