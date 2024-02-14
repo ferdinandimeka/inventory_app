@@ -75,7 +75,9 @@ app.use('/api/v1/management', managementRoute);
 // console.log(pass)
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI)
+const URI = process.env.MONGODB_URI
+//console.log(URI.toString())
+mongoose.connect(URI)
     .then(() => {
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}`);
