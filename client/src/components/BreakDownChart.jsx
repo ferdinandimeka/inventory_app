@@ -67,7 +67,7 @@ const BreakDownChart = ({ isDashboard=false }) => {
               },
             },
           }}
-          margin={isDashboard ? { top: 40, right: 80, bottom: 100, left: 50 } 
+          margin={isDashboard ? { top: 0, right: 70, bottom: 110, left: 60 } 
           : { top: 40, right: 80, bottom: 80, left: 80}}
           sortByValue={true}
           innerRadius={0.5}
@@ -133,7 +133,7 @@ const BreakDownChart = ({ isDashboard=false }) => {
       textAlign="center"
       pointerEvents="none"
       sx={{
-        transform: isDashboard ? "translate(280%, -440%)"
+        transform: isDashboard ? "translate(270%, -480%)"
         : "translate(100%, -400%)",
       }}
     >

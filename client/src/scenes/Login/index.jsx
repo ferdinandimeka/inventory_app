@@ -135,7 +135,7 @@ return (
 
           <FlexBetween>
               <Hidden mdDown>
-              <Typography
+              {/* <Typography
                   position="absolute"
                   top="7rem"
                   left="15%"
@@ -145,7 +145,7 @@ return (
                   color={theme.palette.secondary[500]}
               >
                   Welcome Back!!!
-              </Typography>
+              </Typography> */}
               
               <Box
                   component="img"

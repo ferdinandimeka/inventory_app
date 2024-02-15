@@ -52,7 +52,12 @@ const Dashboard = () => {
   ]
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box
+      m="3.5rem 2.5rem"
+      sx={{
+        bottom: 5,
+      }}
+    >
       <FlexBetween>
         <Header title="Dashboard" subtitle="Overview of sales and performance" />
         <Box>
@@ -60,9 +65,9 @@ const Dashboard = () => {
             sx={{
               backgroundColor: theme.palette.secondary[500],
               color: theme.palette.background.alt,
-              fontSize: '0.8rem',
+              fontSize: '0.63rem',
               fontWeight: 'bold',
-              padding: '0.5rem 1rem',
+              padding: '0.4rem 0.8rem',
 
               '&:hover': {
                 backgroundColor: theme.palette.secondary[100],
@@ -70,7 +75,7 @@ const Dashboard = () => {
               },
             }}
           >
-            <DownloadOutlined sx={{ mr: '10px' }} />
+            <DownloadOutlined sx={{ mr: '6px' }} />
             Download Reports
           </Button>
         </Box>
@@ -177,6 +182,7 @@ const Dashboard = () => {
           backgroundColor={theme.palette.background.paper}
           p="1.5rem"
           borderRadius="10px"
+          mb="2rem"
         >
           <Typography variant="6" sx={{ color: theme.palette.secondary[100] }}>
             Sales By Category
@@ -185,6 +191,7 @@ const Dashboard = () => {
           <Typography
             p="0 0.6rem"
             fontSize="0.8rem"
+            mt="-1.5rem"
             sx={{ color: theme.palette.secondary[200] }}
           >
             Breakdown of real sales and information via category for revenue made
