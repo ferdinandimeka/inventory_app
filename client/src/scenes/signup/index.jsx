@@ -4,7 +4,7 @@ import { Box, Button, Typography, useTheme, FormControl, InputLabel, FormHelperT
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import signup from '../../assets/images/pie_chart.jpg'
+import signup from '../../assets/images/edit.jpg'
 import FlexBetween from '../../components/FlexBetween'
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import GoogleIcon from '@mui/icons-material/Google';
@@ -118,7 +118,7 @@ const Signup = () => {
 
             <FlexBetween>
                 <Hidden mdDown>
-                <Typography
+                {/* <Typography
                     position="absolute"
                     top="8rem"
                     left="15%"
@@ -128,7 +128,7 @@ const Signup = () => {
                     color={theme.palette.primary[500]}
                 >
                     Welcome Back!!!
-                </Typography>
+                </Typography> */}
                 
                 <Box
                     component="img"

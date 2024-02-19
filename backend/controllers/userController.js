@@ -246,7 +246,7 @@ export const forgotPassword = asyncHandler( async (req, res) => {
     const resetUrl = `${process.env.CLIENT_URL}/api/v1/users/password-reset/${resetToken}`;
 
     const message = `
-        <h2>Hello ${user.username}</h2>
+        <h2>Hello ${user.name}</h2>
         <p>Please use the URL below to reset your password</p>
         <p>This reset link is valid for sometime</p>
 
