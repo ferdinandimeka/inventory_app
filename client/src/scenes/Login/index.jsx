@@ -1,5 +1,6 @@
 import { Box, Button, Typography, useTheme, FormControl, InputLabel, FormHelperText, Input,
-  IconButton, Hidden
+  IconButton, Hidden,
+  CircularProgress
 } from '@mui/material'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -281,16 +282,22 @@ return (
                           </Typography>
                           </FlexBetween>
                       </form>
-                      <Typography 
-                          ml="1rem"
-                          mt="2rem"
-                      >Don`t have an account? <span style={{color: theme.palette.secondary[500], 
-                      cursor: 'pointer'}} onClick={() => {clickHandler('/signup')}}>Sign Up</span>
-                      </Typography>
+                    <Box
+                        display="flex"
+                        justifyContent="center"
+                        alignItems="center"
+                    >
+                        {isLoading && <CircularProgress color="secondary" />}
+                    </Box>
+                    <Typography 
+                        ml="1rem"
+                        mt="2rem"
+                    >Don`t have an account? <span style={{color: theme.palette.secondary[500], 
+                    cursor: 'pointer'}} onClick={() => {clickHandler('/signup')}}>Sign Up</span>
+                    </Typography>
                   </Box>
               </Box>
-          </FlexBetween>
-          {isLoading && 'Loading...'}                   
+          </FlexBetween>                 
       </Box>
   </Box>
 )
