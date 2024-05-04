@@ -73,6 +73,7 @@ const Signup = () => {
         toast.success("Account created successfully");
         navigate("/login");
       } catch (err) {
+        console.log(err);
         toast.error(err?.data?.message || err.error || "An error occurred");
       }
     },

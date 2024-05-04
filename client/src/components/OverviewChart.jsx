@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useTheme } from "@mui/material";
 import { ResponsiveLine } from "@nivo/line";
 import { useGetSalesQuery } from "../state/api";
+import { CircularProgress, Box } from "@mui/material";
 
 // eslint-disable-next-line react/prop-types
 const OverviewChart = ({ isDashboard = false, view }) => {
@@ -36,8 +37,13 @@ const OverviewChart = ({ isDashboard = false, view }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data])
 
-    if (!data || isLoading) return 'Loading...';
-
+    if (isLoading) {
+        return (
+          <Box display="flex" justifyContent="center" alignItems="center">
+            <CircularProgress />
+          </Box>
+        );
+      }
     return (
         <ResponsiveLine
             data={view === 'sales' ? totalSalesLine : totalUnitLine}
