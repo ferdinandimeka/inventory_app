@@ -127,8 +127,13 @@ const Signup = () => {
         </Box>
       </Box>
 
-      <Box height="90vh" mt="2rem" mx="8%" borderRadius="2rem">
-        <FlexBetween>
+      <Box height="100vh" mt="2rem" mx="8%" borderRadius="2rem">
+        <FlexBetween
+            height="90%"
+            borderRadius="2rem"
+            boxShadow={theme.shadows[10]}
+            overflow="hidden"
+        >
           <Hidden mdDown>
             {/* <Typography
                     position="absolute"
@@ -147,7 +152,7 @@ const Signup = () => {
               alt="signup image"
               src={signup}
               width="50%"
-              height="596px"
+              height="100%"
               borderRadius="2rem 0 0 2rem"
             />
           </Hidden>
@@ -157,7 +162,7 @@ const Signup = () => {
               backgroundColor: theme.palette.primary[700],
               //color: theme.palette.primary[900],
               width: "100%",
-              height: "596px",
+              height: "100%",
               borderRadius: "0 2rem 2rem 0",
               padding: "0.7rem",
             }}
@@ -197,7 +202,7 @@ const Signup = () => {
                   sign in with google
                 </Typography>
               </Button>
-            </Box>
+            </Box> 
 
             <Typography m="2rem 1rem">Or create an account?</Typography>
 
